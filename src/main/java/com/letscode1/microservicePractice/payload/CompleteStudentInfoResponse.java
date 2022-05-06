@@ -6,10 +6,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
 @AllArgsConstructor
-public class CompleteStudentInfoResponse {
+public class CompleteStudentInfoResponse implements Serializable {
 
     private Integer id;
 

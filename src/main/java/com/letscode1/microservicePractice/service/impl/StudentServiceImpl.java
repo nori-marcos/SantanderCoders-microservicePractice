@@ -11,6 +11,7 @@ import com.letscode1.microservicePractice.students.GetHouse;
 import com.letscode1.microservicePractice.students.GetSortingHatKey;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -43,6 +44,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+//    Esta solucao nao funcionou, pois retornou o erro 500
+    @Cacheable(cacheNames = "findId", key = "#id")
     public CompleteStudentInfoResponse getById(Integer id) {
 
         Student student = studentRepository.findById(id).orElseThrow();
